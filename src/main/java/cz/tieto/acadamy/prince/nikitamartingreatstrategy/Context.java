@@ -50,6 +50,7 @@ class Context {;
             Globals.GATE_FIELD = true;
             return prince.move(prince.direction);
         }
+//        System.err.println("Something went wrong...");
         return prince.move(prince.direction);
     }
 }

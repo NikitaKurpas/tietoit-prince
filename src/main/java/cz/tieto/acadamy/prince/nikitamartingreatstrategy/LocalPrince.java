@@ -6,6 +6,7 @@ import cz.tieto.princegame.common.gameobject.Field;
 import cz.tieto.princegame.common.gameobject.Prince;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
 * Created by Nikita on 07/04/2014.
@@ -17,7 +18,7 @@ public class LocalPrince {
     Field currentField;
     Field previousField;
 
-    HashMap<String, Equipment> equipmentList = new HashMap();
+    Map<String, Equipment> equipmentList = new HashMap();
 
     int currentHealth;
     int maxHealth;
@@ -59,7 +60,7 @@ public class LocalPrince {
         if (nextField == null) {
             Globals.DIRECTION = Direction.changeDirection(Globals.DIRECTION);
             direction = Globals.DIRECTION;
-            return move(direction);
+            return new Context(this, previousField).executeStrategy();
         }
         return new Context(this, Globals.GATE_FIELD ? currentField : nextField).executeStrategy();
     }

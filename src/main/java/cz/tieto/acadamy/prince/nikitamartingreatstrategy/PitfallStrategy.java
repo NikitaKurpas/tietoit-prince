@@ -14,6 +14,6 @@ class PitfallStrategy implements Strategy {
     }
 
     public Action execute() {
-        return this.prince.jump(this.prince.direction);
+        return prince.jump(this.prince.direction);
     }
 }

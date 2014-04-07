@@ -33,7 +33,7 @@ public class LocalPrinceTest {
                     };
                 }
                 if (direction == 1) {
-                    return new FieldStub();
+                    return null;
                 }
                 if (direction == 0) {
                     return new FieldStub();
