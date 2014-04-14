@@ -1,7 +1,7 @@
 package test.cz.tieto.acadamy.prince.nikitamartingreatstrategy;
 
 import cz.tieto.acadamy.prince.nikitamartingreatstrategy.LocalPrince;
-import cz.tieto.princegame.common.action.JumpBackward;
+import cz.tieto.princegame.common.action.*;
 import cz.tieto.princegame.common.gameobject.Field;
 import cz.tieto.princegame.common.gameobject.Obstacle;
 import org.junit.After;
@@ -21,29 +21,39 @@ public class LocalPrinceTest {
 
     @Test
     public void testPitfall() {
-        LocalPrince prince = new LocalPrince(new PrinceStub() {
-            @Override
-            public Field look(int direction) {
-                if (direction == -1) {
-                    return new FieldStub() {
-                        @Override
-                        public Obstacle getObstacle() {
-                            return new PitfallStub();
-                        }
-                    };
-                }
-                if (direction == 1) {
-                    return null;
-                }
-                if (direction == 0) {
-                    return new FieldStub();
-                }
-                throw new IllegalArgumentException();
+        PrinceStub princeStub = new PrinceStub();
+
+        while (true) {
+            LocalPrince prince = new LocalPrince(princeStub);
+            Action action = prince.decide();
+            System.out.println("action = " + action.getClass());
+            if (action instanceof MoveForward) {
+                princeStub.position += 1;
+                continue;
             }
-        });
-
-        assertTrue(prince.decide() instanceof JumpBackward);
-
+            if (action instanceof MoveBackward) {
+                princeStub.position -= 1;
+                continue;
+            }
+            if (action instanceof JumpForward) {
+                princeStub.position += 2;
+                continue;
+            }
+            if (action instanceof JumpBackward) {
+                princeStub.position -= 2;
+                continue;
+            }
+            if (action instanceof EnterGate) {
+                System.out.println("WIN");
+                assertTrue(true);
+                break;
+            }
+            if (action instanceof Heal) {
+                princeStub.health += 5;
+                continue;
+            }
+        }
+//        assertTrue(prince.decide() instanceof JumpBackward);
     }
 /** 
 * 

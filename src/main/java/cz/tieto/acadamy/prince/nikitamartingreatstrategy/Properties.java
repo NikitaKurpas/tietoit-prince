@@ -6,6 +6,6 @@ package cz.tieto.acadamy.prince.nikitamartingreatstrategy;
 class Properties {
     public static final String CHOPPER_OPENING = "opening";
     public static final String TRUE = "true";
-    public static final String KNIGHT_HEALTH = "health";
-    public static final String KNIGHT_DEAD = "dead";
+    public static final String HEALTH = "health";
+    public static final String DEAD = "dead";
 }

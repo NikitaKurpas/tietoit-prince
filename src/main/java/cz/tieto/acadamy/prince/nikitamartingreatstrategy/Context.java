@@ -7,7 +7,7 @@ import cz.tieto.princegame.common.gameobject.Field;
 import cz.tieto.princegame.common.gameobject.Obstacle;
 
 /**
-* Created by Nikita on 07/04/2014.
+* TODO: analyse(next field) method and do(set of flags) method
 */
 class Context {;
     private Obstacle obstacle;
@@ -29,8 +29,18 @@ class Context {;
         if (Globals.HEAL_REQUIRED) {
             return new HealStrategy().execute();
         }
+        if (prince.currentHealth < 4) {
+            Globals.HEAL_REQUIRED = true;
+            prince.direction = Direction.changeDirection(prince.direction);
+            return new Context(prince, prince.previousField).executeStrategy();
+        }
         if (equipment != null) {
-            return prince.pickUp();
+            if (!Globals.EQUIPMENT_FIELD) {
+                Globals.EQUIPMENT_FIELD = true;
+                return prince.move(prince.direction);
+            } else {
+                return prince.pickUp();
+            }
         }
         if (obstacle != null) {
             if (obstacle.getName().equals(Obstacles.PITFALL)) {
@@ -41,6 +51,9 @@ class Context {;
             }
             if (obstacle.getName().equals(Obstacles.KNIGHT)) {
                 return new KnightStrategy(prince, obstacle).execute();
+            }
+            if (obstacle.getName().equals(Obstacles.DRAGON)) {
+                return new DragonStrategy(prince, obstacle).execute();
             }
         }
         if (Globals.GATE_FIELD) {

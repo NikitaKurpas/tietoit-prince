@@ -17,9 +17,11 @@ class ChopperStrategy implements Strategy {
     }
 
     public Action execute() {
-        if (chopper.isOpening)
+        if (chopper.isOpening){
             return this.prince.jump(this.prince.direction);
-        else
+        }
+        else {
             return new HealStrategy().execute();
+        }
     }
 }

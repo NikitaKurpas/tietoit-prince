@@ -62,6 +62,10 @@ public class LocalPrince {
             direction = Globals.DIRECTION;
             return new Context(this, previousField).executeStrategy();
         }
-        return new Context(this, Globals.GATE_FIELD ? currentField : nextField).executeStrategy();
+        if (Globals.GATE_FIELD || Globals.EQUIPMENT_FIELD) {
+            return new Context(this, currentField).executeStrategy();
+        } else {
+            return new Context(this, nextField).executeStrategy();
+        }
     }
 }

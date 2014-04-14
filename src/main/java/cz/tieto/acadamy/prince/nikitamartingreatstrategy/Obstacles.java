@@ -7,4 +7,5 @@ class Obstacles {
     public static final String PITFALL = "pitfall";
     public static final String CHOPPER = "chopper";
     public static final String KNIGHT = "knight";
+    public static final String DRAGON = "dragon";
 }

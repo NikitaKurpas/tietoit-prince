@@ -5,9 +5,9 @@ import cz.tieto.princegame.common.gameobject.Field;
 import cz.tieto.princegame.common.gameobject.Obstacle;
 
 /**
- * Created by Nikita on 07/04/2014.
+ * Created by Nikita on 14-Apr-14.
  */
-public class FieldStub implements Field {
+public class GateStub implements Field {
     @Override
     public Equipment getEquipment() {
         return null;
@@ -20,6 +20,6 @@ public class FieldStub implements Field {
 
     @Override
     public boolean isGate() {
-        return false;
+        return true;
     }
 }
