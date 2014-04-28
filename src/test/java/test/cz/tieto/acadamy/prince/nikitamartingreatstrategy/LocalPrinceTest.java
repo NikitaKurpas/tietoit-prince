@@ -1,30 +1,31 @@
 package test.cz.tieto.acadamy.prince.nikitamartingreatstrategy;
 
-import cz.tieto.acadamy.prince.nikitamartingreatstrategy.LocalPrince;
+import cz.tieto.acadamy.prince.nikitamartingreatstrategy.local.LocalPrince;
+import cz.tieto.acadamy.prince.nikitamartingreatstrategy.variables.GlobalFlags;
+import cz.tieto.acadamy.prince.nikitamartingreatstrategy.variables.LocalFlags;
 import cz.tieto.princegame.common.action.*;
-import cz.tieto.princegame.common.gameobject.Field;
-import cz.tieto.princegame.common.gameobject.Obstacle;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 /** 
-* LocalPrince Tester. 
+* LocalPrince Tester.
 * 
 * @author <Authors name> 
 * @since <pre>Apr 7, 2014</pre> 
 * @version 1.0 
 */ 
-public class LocalPrinceTest { 
+public class LocalPrinceTest {
 
     @Test
     public void testPitfall() {
         PrinceStub princeStub = new PrinceStub();
 
         while (true) {
-            LocalPrince prince = new LocalPrince(princeStub);
+            LocalPrince prince = new LocalPrince();
+            prince.readPrince(princeStub);
+            prince.readGlobalFlags(new GlobalFlags());
+            prince.readLocalFlags(new LocalFlags());
             Action action = prince.decide();
             System.out.println("action = " + action.getClass());
             if (action instanceof MoveForward) {
@@ -53,7 +54,7 @@ public class LocalPrinceTest {
                 continue;
             }
         }
-//        assertTrue(prince.decide() instanceof JumpBackward);
+//        assertTrue(originalPrince.decide() instanceof JumpBackward);
     }
 /** 
 * 

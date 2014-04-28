@@ -1,10 +1,7 @@
 package test.cz.tieto.acadamy.prince.nikitamartingreatstrategy;
 
-//import cz.tieto.acadamy.prince.nikitamartingreatstrategy.Context;
-//import cz.tieto.acadamy.prince.nikitamartingreatstrategy.Direction;
-import cz.tieto.acadamy.prince.nikitamartingreatstrategy.LocalPrince;
-import cz.tieto.acadamy.prince.nikitamartingreatstrategy.NikitaMartinGreatStrategy;
-import cz.tieto.princegame.common.action.*;
+//import cz.tieto.acadamy.originalPrince.nikitamartingreatstrategy.Context;
+//import cz.tieto.acadamy.originalPrince.nikitamartingreatstrategy.Direction;
 import cz.tieto.princegame.common.gameobject.Equipment;
 import cz.tieto.princegame.common.gameobject.Field;
 import cz.tieto.princegame.common.gameobject.Prince;

@@ -1,5 +1,7 @@
-package cz.tieto.acadamy.prince.nikitamartingreatstrategy;
+package cz.tieto.acadamy.prince.nikitamartingreatstrategy.local;
 
+import cz.tieto.acadamy.prince.nikitamartingreatstrategy.variables.Obstacles;
+import cz.tieto.acadamy.prince.nikitamartingreatstrategy.variables.Properties;
 import cz.tieto.princegame.common.gameobject.Obstacle;
 
 /**
@@ -8,10 +10,10 @@ import cz.tieto.princegame.common.gameobject.Obstacle;
 public class Dragon {
     private Obstacle obstacle;
 
-    int health;
-    int damageShort = 3;
-    int damageLong = 1;
-    boolean isDead = false;
+    public int health;
+    public int damageShort = 3;
+    public int damageLong = 1;
+    public boolean isDead = false;
 
     public Dragon(Obstacle obstacle) {
         if (!obstacle.getName().equals(Obstacles.DRAGON)) {

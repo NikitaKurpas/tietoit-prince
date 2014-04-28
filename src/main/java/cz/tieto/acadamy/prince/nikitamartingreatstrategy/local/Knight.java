@@ -1,15 +1,17 @@
-package cz.tieto.acadamy.prince.nikitamartingreatstrategy;
+package cz.tieto.acadamy.prince.nikitamartingreatstrategy.local;
 
+import cz.tieto.acadamy.prince.nikitamartingreatstrategy.variables.Obstacles;
+import cz.tieto.acadamy.prince.nikitamartingreatstrategy.variables.Properties;
 import cz.tieto.princegame.common.gameobject.Obstacle;
 
 /**
 * Created by Nikita on 07/04/2014.
 */
-class Knight {
+public class Knight {
     private Obstacle obstacle;
 
-    int health;
-    boolean isDead = false;
+    public int health;
+    public boolean isDead = false;
 
     public Knight(Obstacle obstacle) {
         if (!obstacle.getName().equals(Obstacles.KNIGHT)) {
