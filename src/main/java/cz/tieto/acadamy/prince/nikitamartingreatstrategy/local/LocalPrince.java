@@ -7,6 +7,7 @@ import cz.tieto.acadamy.prince.nikitamartingreatstrategy.variables.LocalFlags;
 import cz.tieto.princegame.common.action.*;
 import cz.tieto.princegame.common.gameobject.Equipment;
 import cz.tieto.princegame.common.gameobject.Prince;
+import org.apache.commons.lang.ObjectUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,8 +35,16 @@ public class LocalPrince {
         this.globalFlags = flags;
     }
 
+    public void readDirection() {
+        this.direction = this.globalFlags.DIRECTION;
+    }
+
     public void readPrince(Prince prince) {
         this.originalPrince = prince;
+        if (globalFlags != null) {
+            direction = globalFlags.DIRECTION;
+        }
+        System.out.println("[DEBUG] DIRECTION = " + direction.getDirection());
 
         this.fieldSet.nextField = prince.look(this.direction.getDirection()); // CURRENT DIRECTION
         this.fieldSet.currentField = prince.look(Direction.CURRENT); // CURRENT FIELD
@@ -44,14 +53,22 @@ public class LocalPrince {
         this.currentHealth = prince.getHealth();
         this.maxHealth = prince.getMaxHealth();
 
-        localFlags = new LocalFlags();
+        if (localFlags == null) localFlags = new LocalFlags();
 
         if (currentHealth >= maxHealth) {
             globalFlags.HEAL_REQUIRED = false;
         } else {
-            if (currentHealth <= 4) {
+            if (currentHealth <= 4 && !globalFlags.HEAL_REQUIRED) {
+                globalFlags.RETREAT = true;
                 globalFlags.HEAL_REQUIRED = true;
             }
+        }
+
+        if (fieldSet.nextField == null) {
+            System.out.println("[DEBUG] CHANGE DIRECTION");
+            globalFlags.DIRECTION.changeDirection(true);
+            readPrince(originalPrince);
+            return;
         }
 
         for (Equipment eq : prince.getInventory()) {
@@ -60,6 +77,7 @@ public class LocalPrince {
     }
 
     public Action move(Direction direction) {
+        System.out.println("[DEBUG] MOVE " + (direction.getDirection() == 1 ? "FORWARD" : "BACKWARD"));
         if (direction.getDirection() == Direction.FORWARD) return new MoveForward();
         if (direction.getDirection() == Direction.BACKWARD) return new MoveBackward();
         throw new IllegalArgumentException();
@@ -72,6 +90,7 @@ public class LocalPrince {
     }
 
     public Action jump(Direction direction) {
+        System.out.println("[DEBUG] JUMP " + (direction.getDirection() == 1 ? "FORWARD" : "BACKWARD"));
         if (direction.getDirection() == Direction.FORWARD) return new JumpForward();
         if (direction.getDirection() == Direction.BACKWARD) return new JumpBackward();
         throw new IllegalArgumentException();

@@ -16,6 +16,7 @@ class PitfallStrategy implements Strategy {
 
     public Action execute() {
         this.prince.globalFlags.DOUBLE_RETREAT = false;
+        this.prince.globalFlags.RETREAT = false;
         return prince.jump(this.prince.direction);
     }
 }

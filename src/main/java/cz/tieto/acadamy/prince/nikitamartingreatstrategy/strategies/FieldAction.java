@@ -15,6 +15,7 @@ public class FieldAction {
 
     public Action chooseAction() {
         if (prince.globalFlags.RETREAT || prince.globalFlags.DOUBLE_RETREAT) {
+            System.out.println("[DEBUG] RETREAT");
             prince.direction.changeDirection(true); // TEMPORARILY CHANGE DIRECTION
 
             if (Helpers.isObstacleField(prince.fieldSet.previousField)) {
@@ -25,6 +26,7 @@ public class FieldAction {
         }
 
         if (prince.globalFlags.HEAL_REQUIRED) {
+            System.out.println("[DEBUG] HEAL");
             return prince.heal();
         }
 
@@ -32,10 +34,16 @@ public class FieldAction {
             return obstacleAction(prince.fieldSet.nextField.getObstacle());
         }
 
-        return null;
+        System.out.println("[DEBUG] NO OBSTACLE");
+
+        if (prince.globalFlags.DOUBLE_RETREAT && !prince.globalFlags.RETREAT) prince.globalFlags.DOUBLE_RETREAT = false;
+        if (prince.globalFlags.RETREAT) prince.globalFlags.RETREAT = false;
+        return prince.move(prince.direction);
     }
 
     private Action obstacleAction(Obstacle obstacle) {
+        System.out.println("[DEBUG] OBSTACLE " + obstacle.getName());
+
         if (obstacle.getName().equals(Obstacles.PITFALL)) {
             return new PitfallStrategy(prince).execute();
         }

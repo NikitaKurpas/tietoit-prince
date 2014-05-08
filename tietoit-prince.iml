@@ -12,7 +12,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: cz.tieto.princegame:PrinceGameCommon:0.4" level="project" />
-    <orderEntry type="library" name="Maven: cz.tieto.princegame:PrinceGameClient:0.23" level="project" />
+    <orderEntry type="library" name="Maven: cz.tieto.princegame:PrinceGameClient:0.24" level="project" />
     <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-frontend-jaxws:2.2.3" level="project" />
     <orderEntry type="library" name="Maven: xml-resolver:xml-resolver:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.geronimo.specs:geronimo-jaxws_2.1_spec:1.0" level="project" />

@@ -5,4 +5,5 @@ package cz.tieto.acadamy.prince.nikitamartingreatstrategy.variables;
 */
 public class Equipments {
     public static final String SWORD = "sword";
+    public static final String MATCHES = "matches";
 }

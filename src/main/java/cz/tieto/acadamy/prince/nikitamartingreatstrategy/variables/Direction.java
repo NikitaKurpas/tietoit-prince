@@ -11,8 +11,10 @@ public class Direction {
 
     public int changeDirection(boolean override) {
         int direction = this.direction * -1;
-        if (override)
+        if (override) {
+            System.out.println("[DEBUG] OVERWRITTEN DIRECTION");
             this.direction = direction;
+        }
         return direction;
     }
 

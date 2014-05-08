@@ -22,7 +22,10 @@ class KnightStrategy implements Strategy {
     }
 
     public Action execute() {
-        if (knight.isDead) return prince.move(prince.direction);
+        if (knight.isDead) {
+            this.prince.globalFlags.RETREAT = false;
+            return prince.move(prince.direction);
+        }
         if (prince.globalFlags.HEAL_REQUIRED) {
             prince.globalFlags.RETREAT = true;
             return new FieldAction(prince).chooseAction();

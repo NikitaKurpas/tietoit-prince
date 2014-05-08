@@ -18,7 +18,10 @@ public class DragonStrategy {
     }
 
     public Action execute() {
-        if (dragon.isDead) return prince.move(prince.direction);
+        if (dragon.isDead) {
+            this.prince.globalFlags.RETREAT = false;
+            return prince.move(prince.direction);
+        }
         if (prince.currentHealth < 6) {
             prince.globalFlags.HEAL_REQUIRED = true;
             prince.globalFlags.RETREAT = prince.globalFlags.DOUBLE_RETREAT = true;

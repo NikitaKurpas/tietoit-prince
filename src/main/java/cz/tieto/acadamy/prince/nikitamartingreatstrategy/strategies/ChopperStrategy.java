@@ -21,6 +21,7 @@ class ChopperStrategy implements Strategy {
     public Action execute() {
         if (chopper.isOpening){
             this.prince.globalFlags.DOUBLE_RETREAT = false;
+            this.prince.globalFlags.RETREAT = false;
             return this.prince.jump(this.prince.direction);
         }
         else {
