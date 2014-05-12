@@ -20,4 +20,8 @@ public class NikitaMartinGreatStrategy implements GameStrategy {
         return localPrince.decide();
     }
 
+    void setGlobalFlags(GlobalFlags flags) {
+        this.globalFlags = flags;
+    }
+
 }

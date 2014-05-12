@@ -21,4 +21,8 @@ public class Direction {
     public int getDirection() {
         return this.direction;
     }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
 }
